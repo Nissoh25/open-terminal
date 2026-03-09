@@ -93,3 +93,7 @@ ENABLE_NOTEBOOKS = os.environ.get(
     "OPEN_TERMINAL_ENABLE_NOTEBOOKS",
     str(config.get("enable_notebooks", True)),
 ).lower() not in ("false", "0", "no")
+UVICORN_LOOP = os.environ.get(
+    "OPEN_TERMINAL_UVICORN_LOOP",
+    config.get("uvicorn_loop", "auto"),
+)
