@@ -88,6 +88,10 @@ COPY --from=builder /install /usr/local
 WORKDIR /app
 COPY . .
 
+# Uncomment to apply security patches beyond what the base image provides.
+# Not recommended for reproducible builds; prefer bumping the base image tag.
+# RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+
 # Install the app itself (fast — all deps are already present) and grant
 # the Python binary cap_setgid so multi-user mode can call setgid().
 # ⚠️  setcap MUST run in the same layer as the binary to avoid overlay2 issues.

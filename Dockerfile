@@ -39,6 +39,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Docker CLI + Compose + Buildx (mount socket at runtime for access)
 RUN curl -fsSL https://get.docker.com | sh
 
+# Uncomment to apply security patches beyond what the base image provides.
+# Not recommended for reproducible builds; prefer bumping the base image tag.
+# RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /app
 

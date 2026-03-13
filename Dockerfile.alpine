@@ -94,6 +94,9 @@ COPY --from=builder /install /usr/local
 WORKDIR /app
 COPY . .
 
+# Alpine patches ship fast. Upgrade base packages to pick up security fixes
+# that landed after the pinned base image was published.
+RUN apk upgrade --no-cache
 
 # Install the app itself (fast — all deps are already present) and grant
 # the Python binary cap_setgid so multi-user mode can call setgid().
